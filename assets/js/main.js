@@ -230,32 +230,56 @@ function bindInterestForm() {
 }
 
 function guardDashboard() {
-  // Only run this script if we are actually on the dashboard page
   if ($("body").data("page") !== "dashboard") return;
 
-  // 1. Check who is logged in
   const activeUsername = localStorage.getItem("currentUser");
-
-  // 2. If no one is logged in, kick them back to the login page
   if (!activeUsername) {
     window.location.href = "login.html";
     return;
   }
 
-  // 3. Fetch the user's specific account details from local storage
   const userString = localStorage.getItem(activeUsername);
-  
   if (userString) {
     const userObject = JSON.parse(userString);
 
-    // 4. Inject the data into the HTML spans
-    $(".js-dashboard-name").text(userObject.username || "Member");
-    $(".js-dashboard-plan").text(userObject.plan || "No active membership");
+    // If they have a plan, show it and reveal the cancel button
+    if (userObject.plan) {
+      $(".js-dashboard-plan").text(userObject.plan);
+      $(".js-cancel-plan").removeClass("d-none");
+    } else {
+      $(".js-dashboard-plan").text("No active membership");
+      $(".js-cancel-plan").addClass("d-none");
+    }
     
-    // (Note: The current auth.js signup form doesn't collect student IDs, 
-    // so this will default to "Not provided" until that field is added)
+    $(".js-dashboard-name").text(userObject.username || "Member");
     $(".js-dashboard-student-id").text(userObject.studentId || "Not provided");
   }
+}
+
+function bindCancelPlan() {
+  $(".js-cancel-plan").on("click", function() {
+    // 1. Confirm the destructive action
+    if (confirm("Are you sure you want to cancel your membership?")) {
+      
+      const activeUsername = localStorage.getItem("currentUser");
+      if (!activeUsername) return;
+
+      const userString = localStorage.getItem(activeUsername);
+      if (userString) {
+        const userObject = JSON.parse(userString);
+        
+        // 2. Delete the plan property from the user's object
+        delete userObject.plan;
+        
+        // 3. Save the modified object back to local storage
+        localStorage.setItem(activeUsername, JSON.stringify(userObject));
+        
+        // 4. Immediately update the UI to reflect the change
+        $(".js-dashboard-plan").text("No active membership");
+        $(this).addClass("d-none"); // Hide the button again
+      }
+    }
+  });
 }
 
 function bindContactForm() {
@@ -300,4 +324,5 @@ $(function () {
   bindLoginForm();
   bindInterestForm();
   bindContactForm();
+  bindCancelPlan();
 });

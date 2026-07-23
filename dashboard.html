@@ -20,7 +20,11 @@
         <div class="card h-100 shadow-sm">
           <div class="card-body">
             <h2 class="h5">Your Membership</h2>
-            <p class="mb-1"><strong>Plan:</strong> <span class="js-dashboard-plan">Not set</span></p>
+            <p class="mb-1 d-flex align-items-center gap-2">
+              <strong>Plan:</strong> <span class="js-dashboard-plan">Not set</span>
+              <!-- delete the plan if the user wants to change it (hidden if user has no active membership)-->
+              <button class="btn btn-sm btn-outline-danger d-none js-cancel-plan" type="button">Cancel</button>
+            </p>
             <p class="mb-0"><strong>Student ID:</strong> <span class="js-dashboard-student-id">Not set</span></p>
           </div>
         </div>
