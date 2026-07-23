@@ -1,1 +1,16 @@
 /* Global CSS styles should be entered here */
+
+:root {
+    /* Primary Colours */
+    --color-primary-blue: #001E62;
+    --color-accent-blue: #00A9E0;
+
+    /* 2. Secondary / Background Base colours */
+    --color-white: #FFFFFF;
+    --color-light-grey: #F4F4F4;
+    --color-text-dark: #333333;
+
+    /* Accent colours */
+    --color-muted-grey: #7C878E;
+
+}
