@@ -36,6 +36,58 @@ function setSession(user) {
   });
 }
 
+function renderSharedComponents() {
+  const navbar = `
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="index.html">Ulster Uni Gym</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link nav-home" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-info" href="information.html">Information</a></li>
+            <li class="nav-item"><a class="nav-link nav-membership" href="membership.html">Memberships</a></li>
+            <li class="nav-item"><a class="nav-link nav-signup" href="signup.html">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link nav-login" href="login.html">Log In</a></li>
+            <li class="nav-item"><a class="nav-link nav-dashboard auth-only d-none" href="dashboard.html">Dashboard</a></li>
+          </ul>
+          <div class="d-flex gap-2 align-items-center">
+            <span class="text-white-50 small auth-only d-none">Logged in as <span class="js-user-name">Member</span></span>
+            <button class="btn btn-outline-light btn-sm auth-only d-none js-logout" type="button">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </nav>`;
+
+  const footer = `
+    <footer class="site-footer border-top py-4 mt-5">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <p class="mb-0 small">Ulster University Gym Template</p>
+        <ul class="nav small">
+          <li class="nav-item"><a class="nav-link px-2 py-0 nav-home" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-2 py-0 nav-info" href="information.html">Information</a></li>
+          <li class="nav-item"><a class="nav-link px-2 py-0 nav-membership" href="membership.html">Memberships</a></li>
+          <li class="nav-item"><a class="nav-link px-2 py-0 nav-signup" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link px-2 py-0 nav-login" href="login.html">Log In</a></li>
+          <li class="nav-item auth-only d-none"><a class="nav-link px-2 py-0 nav-dashboard" href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <p class="mb-0 small text-secondary">© <span class="js-current-year"></span> Ulster University</p>
+      </div>
+    </footer>`;
+
+  const $navbar = $("#navbar-placeholder");
+  const $footer = $("#footer-placeholder");
+
+  if ($navbar.length) {
+    $navbar.html(navbar);
+  }
+  if ($footer.length) {
+    $footer.html(footer);
+  }
+}
+
 function updateNavbar() {
   const page = $("body").data("page");
   const session = getSession();
@@ -48,6 +100,10 @@ function updateNavbar() {
     $(".nav-login").closest(".nav-item").addClass("d-none");
     $(".nav-signup").closest(".nav-item").addClass("d-none");
   }
+}
+
+function updateFooterYear() {
+  $(".js-current-year").text(new Date().getFullYear());
 }
 
 function setMessage(selector, message, isError) {
@@ -192,10 +248,12 @@ function bindLogout() {
 
 $(function () {
   guardDashboard();
+  renderSharedComponents();
   updateNavbar();
+  updateFooterYear();
+  bindLogout();
   bindSignupForm();
   bindLoginForm();
   bindInterestForm();
   bindContactForm();
-  bindLogout();
 });
