@@ -1,0 +1,11 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #ffffff, #e8f1ff);
+}
+
+.navbar .nav-link.active {
+  font-weight: 600;
+}
