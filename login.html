@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,30 +11,29 @@
 <body data-page="login">
   <div id="navbar-placeholder"></div>
 
-  <main class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-7 col-lg-5">
-        <div class="card shadow-sm">
-          <div class="card-body p-4">
-            <h1 class="h4 mb-3">Member Log In</h1>
-            <p class="text-secondary small">Template form. You can replace the fields/validation rules later.</p>
-            <form id="loginForm" novalidate>
-              <div class="mb-3">
-                <label class="form-label" for="loginEmail">Email</label>
-                <input class="form-control" id="loginEmail" name="email" type="email" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="loginPassword">Password</label>
-                <input class="form-control" id="loginPassword" name="password" type="password" required>
-              </div>
-              <button class="btn btn-primary w-100" type="submit">Log In</button>
-              <div class="form-text mt-2 js-login-message"></div>
+            <form id="login-form" name="login-form" onsubmit="loginUser(event)">
+                <div class="vstack gap-3">
+                    <div>
+                        <input type="text" id="login-username"
+                            class="form-control" placeholder="Username"
+                            required>
+                    </div>
+                    <div>
+                        <input type="password" id="login-password"
+                            class="form-control" placeholder="Password"
+                            required>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot password?</a>
+                    </div>
+
+                    <div>
+                        <button class="submit-btn" id="log-in-button"
+                            type="submit">LOG IN</button>
+                    </div>
+                </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
   <div id="footer-placeholder"></div>
 

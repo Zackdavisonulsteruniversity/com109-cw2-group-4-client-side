@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,59 +11,49 @@
 <body data-page="signup">
   <div id="navbar-placeholder"></div>
 
-  <main class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="card shadow-sm">
-          <div class="card-body p-4">
-            <h1 class="h4 mb-3">Create Your Gym Account</h1>
-            <p class="text-secondary small">Template membership form saved in localStorage.</p>
-            <form id="signupForm" class="row g-3" novalidate>
-              <div class="col-md-6">
-                <label class="form-label" for="signupFirstName">First name</label>
-                <input class="form-control" id="signupFirstName" name="firstName" type="text" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="signupLastName">Last name</label>
-                <input class="form-control" id="signupLastName" name="lastName" type="text" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="signupEmail">Email</label>
-                <input class="form-control" id="signupEmail" name="email" type="email" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="signupStudentId">Student ID</label>
-                <input class="form-control" id="signupStudentId" name="studentId" type="text" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="signupPassword">Password</label>
-                <input class="form-control" id="signupPassword" name="password" type="password" minlength="6" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label" for="signupPlan">Membership plan</label>
-                <select class="form-select" id="signupPlan" name="plan" required>
-                  <option value="">Select a plan</option>
-                  <option>Student Standard</option>
-                  <option>Student Plus</option>
-                  <option>Staff Membership</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
-                  <input class="form-check-input" id="signupTerms" name="terms" type="checkbox" required>
-                  <label class="form-check-label" for="signupTerms">I agree to the placeholder gym terms.</label>
+            <div class="field-requirements mb-3 p-3 bg-light rounded border">
+                <h6 class="text-secondary fw-bold mb-2"
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Requirements</h6>
+                <ul class="mb-0 ps-3 text-muted" style="font-size: 0.8rem;">
+                    <li><strong>Username:</strong> Between 3 and 10 characters
+                        long.</li>
+                    <li><strong>Email:</strong> Valid format, max 50 characters,
+                        cannot be empty.</li>
+                    <li><strong>Password:</strong> Between 8 and 20 characters
+                        long.</li>
+                    <li><strong>Confirmation:</strong> Must match the password
+                        exactly.</li>
+                </ul>
+            </div>
+
+            <form id="signup-form" name="signup-form"
+                onsubmit="createUser(event)">
+                <div class="vstack gap-3 mb-2">
+                    <div>
+                        <input type="text" id="username" class="form-control"
+                            placeholder="Username" required>
+                    </div>
+                    <div>
+                        <input type="email" id="email" class="form-control"
+                            placeholder="Email Address" required>
+                    </div>
+                    <div>
+                        <input type="password" id="password"
+                            class="form-control" placeholder="Create Password"
+                            required>
+                    </div>
+                    <div>
+                        <input type="password" id="confirm-password"
+                            class="form-control" placeholder="Re-Enter password"
+                            required>
+                    </div>
                 </div>
-              </div>
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">Create Account</button>
-                <div class="form-text mt-2 js-signup-message"></div>
-              </div>
+
+                <div class="mt-2">
+                    <button class="submit-btn" id="sign-up-button"
+                        type="submit">SIGN UP</button>
+                </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
   <div id="footer-placeholder"></div>
 
