@@ -230,17 +230,32 @@ function bindInterestForm() {
 }
 
 function guardDashboard() {
+  // Only run this script if we are actually on the dashboard page
   if ($("body").data("page") !== "dashboard") return;
 
-  const session = getSession();
-  if (!session) {
+  // 1. Check who is logged in
+  const activeUsername = localStorage.getItem("currentUser");
+
+  // 2. If no one is logged in, kick them back to the login page
+  if (!activeUsername) {
     window.location.href = "login.html";
     return;
   }
 
-  $(".js-dashboard-name").text(session.name || "Member");
-  $(".js-dashboard-plan").text(session.plan || "Not set");
-  $(".js-dashboard-student-id").text(session.studentId || "Not set");
+  // 3. Fetch the user's specific account details from local storage
+  const userString = localStorage.getItem(activeUsername);
+  
+  if (userString) {
+    const userObject = JSON.parse(userString);
+
+    // 4. Inject the data into the HTML spans
+    $(".js-dashboard-name").text(userObject.username || "Member");
+    $(".js-dashboard-plan").text(userObject.plan || "No active membership");
+    
+    // (Note: The current auth.js signup form doesn't collect student IDs, 
+    // so this will default to "Not provided" until that field is added)
+    $(".js-dashboard-student-id").text(userObject.studentId || "Not provided");
+  }
 }
 
 function bindContactForm() {
