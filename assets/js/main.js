@@ -2,7 +2,8 @@ const STORAGE_KEYS = {
   users: "uuGymUsers",
   session: "uuGymSession",
   interestDraft: "uuGymInterestDraft",
-  memberProfiles: "uuGymMemberProfiles"
+  memberProfiles: "uuGymMemberProfiles",
+  accessibilityPrefs: "uuGymAccessibilityPrefs"
 };
 
 function readJson(key, fallback) {
@@ -36,6 +37,41 @@ function setSession(user) {
   });
 }
 
+function getAccessibilityPrefs() {
+  const defaults = { highContrast: false, largeText: false, reducedMotion: false };
+  return { ...defaults, ...readJson(STORAGE_KEYS.accessibilityPrefs, defaults) };
+}
+
+function setAccessibilityPrefs(prefs) {
+  writeJson(STORAGE_KEYS.accessibilityPrefs, prefs);
+}
+
+function applyAccessibilityPrefs() {
+  const prefs = getAccessibilityPrefs();
+  $("body")
+    .toggleClass("a11y-high-contrast", prefs.highContrast)
+    .toggleClass("a11y-large-text", prefs.largeText)
+    .toggleClass("a11y-reduced-motion", prefs.reducedMotion);
+
+  $(".js-toggle-contrast").attr("aria-pressed", String(prefs.highContrast));
+  $(".js-toggle-text").attr("aria-pressed", String(prefs.largeText));
+  $(".js-toggle-motion").attr("aria-pressed", String(prefs.reducedMotion));
+}
+
+function ensureSkipLink() {
+  const $main = $("main").first();
+  if (!$main.length) return;
+
+  const mainId = $main.attr("id") || "main-content";
+  $main.attr("id", mainId).attr("tabindex", "-1");
+
+  if (!$(".skip-link").length) {
+    $("body").prepend(`<a class="skip-link" href="#${mainId}">Skip to main content</a>`);
+  } else {
+    $(".skip-link").attr("href", `#${mainId}`);
+  }
+}
+
 function renderSharedComponents() {
   const navbar = `
     <header class="site-header">
@@ -60,6 +96,11 @@ function renderSharedComponents() {
               <li class="nav-item"><a class="nav-link nav-login" href="login.html">Log In</a></li>
               <li class="nav-item"><a class="nav-link nav-dashboard auth-only d-none" href="dashboard.html">Dashboard</a></li>
             </ul>
+            <div class="d-flex align-items-center gap-2 accessibility-controls me-2" role="group" aria-label="Accessibility controls">
+              <button class="btn btn-outline-secondary btn-sm js-toggle-contrast" type="button" aria-pressed="false" title="Toggle high contrast">Contrast</button>
+              <button class="btn btn-outline-secondary btn-sm js-toggle-text" type="button" aria-pressed="false" title="Toggle larger text">Text +</button>
+              <button class="btn btn-outline-secondary btn-sm js-toggle-motion" type="button" aria-pressed="false" title="Toggle reduced motion">Motion</button>
+            </div>
             <div class="d-flex align-items-center gap-3">
               <span class="small text-secondary auth-only d-none">Logged in as <span class="js-user-name">Member</span></span>
               <button class="btn btn-primary btn-sm auth-only d-none js-logout" type="button">Log Out</button>
@@ -114,6 +155,29 @@ function renderSharedComponents() {
   }
 }
 
+function bindAccessibilityControls() {
+  $(document).on("click", ".js-toggle-contrast", () => {
+    const prefs = getAccessibilityPrefs();
+    prefs.highContrast = !prefs.highContrast;
+    setAccessibilityPrefs(prefs);
+    applyAccessibilityPrefs();
+  });
+
+  $(document).on("click", ".js-toggle-text", () => {
+    const prefs = getAccessibilityPrefs();
+    prefs.largeText = !prefs.largeText;
+    setAccessibilityPrefs(prefs);
+    applyAccessibilityPrefs();
+  });
+
+  $(document).on("click", ".js-toggle-motion", () => {
+    const prefs = getAccessibilityPrefs();
+    prefs.reducedMotion = !prefs.reducedMotion;
+    setAccessibilityPrefs(prefs);
+    applyAccessibilityPrefs();
+  });
+}
+
 function updateNavbar() {
   const page = $("body").data("page");
   const session = getSession();
@@ -134,6 +198,8 @@ function updateFooterYear() {
 
 function setMessage(selector, message, isError) {
   $(selector)
+    .attr("role", "status")
+    .attr("aria-live", "polite")
     .text(message)
     .toggleClass("text-danger", Boolean(isError))
     .toggleClass("text-success", !isError);
@@ -273,9 +339,13 @@ function bindLogout() {
 }
 
 $(function () {
+  applyAccessibilityPrefs();
+  ensureSkipLink();
   guardDashboard();
   renderSharedComponents();
+  bindAccessibilityControls();
   updateNavbar();
+  applyAccessibilityPrefs();
   updateFooterYear();
   bindLogout();
   bindSignupForm();
