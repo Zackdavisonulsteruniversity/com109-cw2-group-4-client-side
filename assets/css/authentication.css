@@ -1,15 +1,17 @@
 body {
     background-color: var(--color-light-grey);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
     color: var(--color-text-dark);
 }
 
-/* Main Form Container Card */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+}
+
 .authentication-form-container {
     background-color: var(--color-white);
     padding: 2.5rem;
@@ -33,7 +35,6 @@ body {
     letter-spacing: -0.5px;
 }
 
-/* Input Fields Override for Bootstrap form controls */
 .form-control {
     width: 100%;
     padding: 0.85rem 1rem;
@@ -58,7 +59,6 @@ body {
     color: var(--color-muted-grey);
 }
 
-/* Forgot Password Link */
 .forgot-password {
     text-align: right;
     margin-top: -0.25rem;
@@ -80,7 +80,6 @@ body {
     text-decoration: underline;
 }
 
-/* Submit Button */
 .submit-btn {
     width: 100%;
     padding: 0.85rem;
@@ -102,7 +101,6 @@ body {
     transform: scale(0.98);
 }
 
-/* Footer Switch Links */
 .signup {
     text-align: center;
     margin-top: 1.5rem;
