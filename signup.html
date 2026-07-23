@@ -24,6 +24,21 @@
                 <h3>Sign Up</h3>
             </div>
 
+            <div class="field-requirements mb-3 p-3 bg-light rounded border">
+                <h6 class="text-secondary fw-bold mb-2"
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Requirements</h6>
+                <ul class="mb-0 ps-3 text-muted" style="font-size: 0.8rem;">
+                    <li><strong>Username:</strong> Between 3 and 10 characters
+                        long.</li>
+                    <li><strong>Email:</strong> Valid format, max 50 characters,
+                        cannot be empty.</li>
+                    <li><strong>Password:</strong> Between 8 and 20 characters
+                        long.</li>
+                    <li><strong>Confirmation:</strong> Must match the password
+                        exactly.</li>
+                </ul>
+            </div>
+
             <form id="signup-form" name="signup-form"
                 onsubmit="createUser(event)">
                 <div class="vstack gap-3 mb-2">
