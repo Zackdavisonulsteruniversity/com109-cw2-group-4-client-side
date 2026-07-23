@@ -1,0 +1,119 @@
+body {
+    background-color: var(--color-light-grey);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--color-text-dark);
+}
+
+/* Main Form Container Card */
+.authentication-form-container {
+    background-color: var(--color-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 30, 98, 0.08);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+}
+
+.authentication-form-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.authentication-form-header h3 {
+    color: var(--color-primary-blue);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* Input Container & Fields */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--color-light-grey);
+    background-color: var(--color-light-grey);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: var(--color-accent-blue);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(0, 169, 224, 0.15);
+}
+
+.input-container input::placeholder {
+    color: var(--color-muted-grey);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    margin-top: -0.5rem;
+}
+
+.forgot-password a,
+.signup a {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.forgot-password a:hover,
+.signup a:hover {
+    color: var(--color-primary-blue);
+    text-decoration: underline;
+}
+
+/* Submit Button (Targeting .botton wrapper) */
+.botton {
+    margin-top: 0.5rem;
+}
+
+.submit {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submit:hover {
+    background-color: var(--color-accent-blue);
+}
+
+.submit:active {
+    transform: scale(0.98);
+}
+
+/* Footer Switch Links (Login/Signup switch) */
+.signup {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-muted-grey);
+}
