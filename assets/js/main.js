@@ -116,13 +116,15 @@ function renderSharedComponents() {
 
 function updateNavbar() {
   const page = $("body").data("page");
-  const session = getSession();
   const navClass = `.nav-${page}`;
   $(navClass).addClass("active");
 
-  if (session) {
+  // Look for our new session token
+  const activeUsername = localStorage.getItem("currentUser");
+
+  if (activeUsername) {
     $(".auth-only").removeClass("d-none");
-    $(".js-user-name").text(session.name || "Member");
+    $(".js-user-name").text(activeUsername);
     $(".nav-login").closest(".nav-item").addClass("d-none");
     $(".nav-signup").closest(".nav-item").addClass("d-none");
   }
@@ -267,7 +269,8 @@ function bindContactForm() {
 
 function bindLogout() {
   $(".js-logout").on("click", () => {
-    localStorage.removeItem(STORAGE_KEYS.session);
+    // Delete our session token on logout
+    localStorage.removeItem("currentUser");
     window.location.href = "login.html";
   });
 }
