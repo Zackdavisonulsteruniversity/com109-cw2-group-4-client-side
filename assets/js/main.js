@@ -38,42 +38,68 @@ function setSession(user) {
 
 function renderSharedComponents() {
   const navbar = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <div class="container">
-        <a class="navbar-brand fw-semibold" href="index.html">Ulster Uni Gym</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link nav-home" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link nav-info" href="information.html">Information</a></li>
-            <li class="nav-item"><a class="nav-link nav-membership" href="membership.html">Memberships</a></li>
-            <li class="nav-item"><a class="nav-link nav-signup" href="signup.html">Sign Up</a></li>
-            <li class="nav-item"><a class="nav-link nav-login" href="login.html">Log In</a></li>
-            <li class="nav-item"><a class="nav-link nav-dashboard auth-only d-none" href="dashboard.html">Dashboard</a></li>
-          </ul>
-          <div class="d-flex gap-2 align-items-center">
-            <span class="text-white-50 small auth-only d-none">Logged in as <span class="js-user-name">Member</span></span>
-            <button class="btn btn-outline-light btn-sm auth-only d-none js-logout" type="button">Log Out</button>
+    <header class="site-header">
+      <div class="utility-bar py-2">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-1 small">
+          <span>Ulster University Gym</span>
+          <span>Student, staff, and community memberships</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+          <a class="navbar-brand fw-bold text-primary" href="index.html">Ulster Uni Gym</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link nav-home" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link nav-info" href="information.html">Information</a></li>
+              <li class="nav-item"><a class="nav-link nav-membership" href="membership.html">Memberships</a></li>
+              <li class="nav-item"><a class="nav-link nav-signup" href="signup.html">Sign Up</a></li>
+              <li class="nav-item"><a class="nav-link nav-login" href="login.html">Log In</a></li>
+              <li class="nav-item"><a class="nav-link nav-dashboard auth-only d-none" href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-3">
+              <span class="small text-secondary auth-only d-none">Logged in as <span class="js-user-name">Member</span></span>
+              <button class="btn btn-primary btn-sm auth-only d-none js-logout" type="button">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>`;
+
+  const footer = `
+    <footer class="site-footer mt-5">
+      <div class="container py-5">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h2 class="h6 footer-heading">Ulster Uni Gym</h2>
+            <p class="small text-secondary mb-0">A clean, modern membership portal for students, staff, and community users.</p>
+          </div>
+          <div class="col-md-4">
+            <h2 class="h6 footer-heading">Quick Links</h2>
+            <ul class="list-unstyled footer-links mb-0">
+              <li><a class="nav-link px-0 nav-home" href="index.html">Home</a></li>
+              <li><a class="nav-link px-0 nav-info" href="information.html">Information</a></li>
+              <li><a class="nav-link px-0 nav-membership" href="membership.html">Memberships</a></li>
+              <li><a class="nav-link px-0 nav-signup" href="signup.html">Sign Up</a></li>
+              <li><a class="nav-link px-0 nav-login" href="login.html">Log In</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 class="h6 footer-heading">Membership Snapshot</h2>
+            <p class="small text-secondary mb-1">UU Student: £230/yr or £21/mo</p>
+            <p class="small text-secondary mb-1">Staff & Grads: £280/yr or £26/mo</p>
+            <p class="small text-secondary mb-0">Community: £325/yr or £31/mo</p>
           </div>
         </div>
       </div>
-    </nav>`;
-
-  const footer = `
-    <footer class="site-footer border-top py-4 mt-5">
-      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-        <p class="mb-0 small">Ulster University Gym Template</p>
-        <ul class="nav small">
-          <li class="nav-item"><a class="nav-link px-2 py-0 nav-home" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link px-2 py-0 nav-info" href="information.html">Information</a></li>
-          <li class="nav-item"><a class="nav-link px-2 py-0 nav-membership" href="membership.html">Memberships</a></li>
-          <li class="nav-item"><a class="nav-link px-2 py-0 nav-signup" href="signup.html">Sign Up</a></li>
-          <li class="nav-item"><a class="nav-link px-2 py-0 nav-login" href="login.html">Log In</a></li>
-          <li class="nav-item auth-only d-none"><a class="nav-link px-2 py-0 nav-dashboard" href="dashboard.html">Dashboard</a></li>
-        </ul>
-        <p class="mb-0 small text-secondary">© <span class="js-current-year"></span> Ulster University</p>
+      <div class="footer-bottom border-top py-3">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-secondary">
+          <span>© <span class="js-current-year"></span> Ulster University</span>
+          <span>Memberships and access details are sample content.</span>
+        </div>
       </div>
     </footer>`;
 
