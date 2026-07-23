@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UU Gym | Memberships</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="membership">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="index.html">Ulster Uni Gym</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link nav-home" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-membership" href="membership.html">Memberships</a></li>
+          <li class="nav-item"><a class="nav-link nav-signup" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link nav-login" href="login.html">Log In</a></li>
+          <li class="nav-item"><a class="nav-link nav-dashboard auth-only d-none" href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="d-flex gap-2 align-items-center">
+          <span class="text-white-50 small auth-only d-none">Logged in as <span class="js-user-name">Member</span></span>
+          <button class="btn btn-outline-light btn-sm auth-only d-none js-logout" type="button">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container py-5">
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold">All-Inclusive Memberships</h1>
+      <p class="lead text-muted">All our membership options provide you with unlimited access to our facilities across all campuses.</p>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-8 mx-auto text-center">
+        <h5 class="mb-3">Every package includes:</h5>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item badge bg-secondary p-2 mb-2">Gym Access</li>
+          <li class="list-inline-item badge bg-secondary p-2 mb-2">Classes</li>
+          <li class="list-inline-item badge bg-secondary p-2 mb-2">Racquet Sports</li>
+          <li class="list-inline-item badge bg-secondary p-2 mb-2">Gym Induction</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Student Plan -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary text-center">
+            <h4 class="my-0 fw-normal">UU Student</h4>
+          </div>
+          <div class="card-body d-flex flex-column text-center">
+            <h1 class="card-title pricing-card-title">£230<small class="text-muted fw-light">/yr</small></h1>
+            <p class="text-muted mb-4">Or £21/month (Monthly excludes club inclusion)</p>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1 text-start px-3">
+              <li>Includes one club (Annual only)</li>
+              <li>Valid student ID required</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="UU Student">Buy Membership</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Staff & Grads Plan -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header py-3 text-center">
+            <h4 class="my-0 fw-normal">Staff & Grads</h4>
+          </div>
+          <div class="card-body d-flex flex-column text-center">
+            <h1 class="card-title pricing-card-title">£280<small class="text-muted fw-light">/yr</small></h1>
+            <p class="text-muted mb-4">Or £26/month</p>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1 text-start px-3">
+              <li>For UU Staff and Graduates</li>
+              <li>Family add-on available (£420/yr)</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="Staff & Grads">Buy Membership</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Plan -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header py-3 text-center">
+            <h4 class="my-0 fw-normal">Community</h4>
+          </div>
+          <div class="card-body d-flex flex-column text-center">
+            <h1 class="card-title pricing-card-title">£325<small class="text-muted fw-light">/yr</small></h1>
+            <p class="text-muted mb-4">Or £31/month</p>
+            <ul class="list-unstyled mt-3 mb-4 flex-grow-1 text-start px-3">
+              <li>Open to the general public</li>
+              <li>Family add-on available (£460/yr)</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="Community">Buy Membership</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Options -->
+      <div class="col-12 mt-5">
+        <div class="card shadow-sm">
+          <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+              <h5 class="mb-1">Other Memberships</h5>
+              <p class="mb-0 text-muted small"><strong>Flexi Pass:</strong> £35/month | <strong>Junior/Senior:</strong> £240/yr or £22/month | <strong>Non-UU Student:</strong> £230/yr or £21/month</p>
+            </div>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="Other">View & Buy</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Purchase Modal -->
+  <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="purchaseForm" novalidate>
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="purchaseModalLabel">Complete Your Purchase</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <h6 class="mb-3">1. Membership Details</h6>
+            <div class="mb-3">
+              <label for="modalPlanSelect" class="form-label">Selected Plan</label>
+              <select class="form-select" id="modalPlanSelect" name="selectedPlan" required>
+                <option value="">Choose...</option>
+                <option value="UU Student - Annual">UU Student - £230/yr</option>
+                <option value="UU Student - Monthly">UU Student - £21/mo</option>
+                <option value="Staff & Grads - Annual">Staff & Grads - £280/yr</option>
+                <option value="Staff & Grads - Monthly">Staff & Grads - £26/mo</option>
+                <option value="Community - Annual">Community - £325/yr</option>
+                <option value="Community - Monthly">Community - £31/mo</option>
+                <option value="Flexi Pass - Monthly">Flexi Pass - £35/mo</option>
+              </select>
+            </div>
+
+            <hr class="my-4">
+            
+            <h6 class="mb-3">2. Payment Information (Dummy)</h6>
+            <div class="mb-3">
+              <label for="ccName" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="ccName" name="ccName" required>
+              <small class="text-muted">Full name as displayed on card</small>
+            </div>
+            <div class="mb-3">
+              <label for="ccNumber" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="ccNumber" name="ccNumber" placeholder="0000 0000 0000 0000" required>
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label for="ccExpiration" class="form-label">Expiration</label>
+                <input type="text" class="form-control" id="ccExpiration" name="ccExpiration" placeholder="MM/YY" required>
+              </div>
+              <div class="col-6 mb-3">
+                <label for="ccCvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="ccCvv" name="ccCvv" required>
+              </div>
+            </div>
+            
+            <div class="alert alert-success d-none js-purchase-success mt-3" role="alert">
+              Payment successful! Membership saved.
+            </div>
+            <div class="alert alert-danger d-none js-purchase-error mt-3" role="alert">
+              Please fill out all fields.
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Process Payment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Auto-select the plan in the modal based on which button was clicked
+      $('#purchaseModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const plan = button.data('plan');
+        const modal = $(this);
+        
+        // Reset form and alerts when opening
+        $('#purchaseForm')[0].reset();
+        $('.js-purchase-success, .js-purchase-error').addClass('d-none');
+
+        // Simple fuzzy match to pre-select dropdown based on data-plan attribute
+        if (plan) {
+          modal.find('#modalPlanSelect option').each(function() {
+            if ($(this).val().includes(plan)) {
+              $(this).prop('selected', true);
+              return false; // Break loop
+            }
+          });
+        }
+      });
+
+      // Handle the dummy payment submission
+      $('#purchaseForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        if (!this.checkValidity()) {
+          $('.js-purchase-error').removeClass('d-none');
+          $('.js-purchase-success').addClass('d-none');
+          return;
+        }
+
+        // Hide error if present
+        $('.js-purchase-error').addClass('d-none');
+        
+        // Get form data
+        const formData = Object.fromEntries(new FormData(this).entries());
+        
+        // Use the existing readJson/writeJson functions from main.js to store purchases locally
+        const purchases = readJson('uuGymPurchases', []);
+        purchases.push({
+          plan: formData.selectedPlan,
+          name: formData.ccName,
+          date: new Date().toISOString()
+        });
+        writeJson('uuGymPurchases', purchases);
+
+        // Show success message
+        $('.js-purchase-success').removeClass('d-none');
+        
+        // Close modal after short delay
+        setTimeout(() => {
+          $('#purchaseModal').modal('hide');
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>
