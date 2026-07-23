@@ -213,14 +213,26 @@
         // Get form data
         const formData = Object.fromEntries(new FormData(this).entries());
         
-        // Use the existing readJson/writeJson functions from main.js to store purchases locally
-        const purchases = readJson('uuGymPurchases', []);
-        purchases.push({
-          plan: formData.selectedPlan,
-          name: formData.ccName,
-          date: new Date().toISOString()
-        });
-        writeJson('uuGymPurchases', purchases);
+        // 1. Get the currently logged-in user's username
+        const activeUsername = localStorage.getItem("currentUser");
+        
+        if (!activeUsername) {
+            alert("You must be logged in to purchase a membership.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        // 2. Retrieve their account document directly from standard local storage
+        const userString = localStorage.getItem(activeUsername); 
+        if (userString) {
+            const userObject = JSON.parse(userString);
+            
+            // 3. Attach the new membership plan
+            userObject.plan = formData.selectedPlan;
+            
+            // 4. Overwrite their old document with the updated one
+            localStorage.setItem(activeUsername, JSON.stringify(userObject));
+        }
 
         // Show success message
         $('.js-purchase-success').removeClass('d-none');
