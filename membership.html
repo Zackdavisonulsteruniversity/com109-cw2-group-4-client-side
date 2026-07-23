@@ -176,6 +176,41 @@
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
+      
+      // --- NEW FEATURE: Check for existing active plan ---
+      const activeUsername = localStorage.getItem("currentUser");
+      
+      if (activeUsername) {
+        const userString = localStorage.getItem(activeUsername);
+        if (userString) {
+          const userObject = JSON.parse(userString);
+          
+          // If the user already has a plan, lock the page
+          if (userObject.plan) {
+            
+            // 1. Disable all buttons that open the modal
+            $('[data-bs-target="#purchaseModal"]').each(function() {
+              $(this).prop('disabled', true);
+              $(this).text('Active Plan Exists');
+              // Swap the blue styling for a neutral grey so it looks disabled
+              $(this).removeClass('btn-primary btn-outline-primary btn-outline-dark').addClass('btn-secondary');
+            });
+            
+            // 2. Inject a warning message above the pricing cards
+            const alertMessage = `
+              <div class="col-12 mb-4">
+                <div class="alert alert-info text-center shadow-sm">
+                  <strong>Notice:</strong> You currently have the <strong>${userObject.plan}</strong> plan active. 
+                  You must <a href="dashboard.html" class="alert-link">cancel it on your dashboard</a> before purchasing a new membership.
+                </div>
+              </div>
+            `;
+            $('.row.g-4').prepend(alertMessage);
+          }
+        }
+      }
+      // ---------------------------------------------------
+
       // Auto-select the plan in the modal based on which button was clicked
       $('#purchaseModal').on('show.bs.modal', function (event) {
         const button = $(event.relatedTarget);
@@ -213,33 +248,31 @@
         // Get form data
         const formData = Object.fromEntries(new FormData(this).entries());
         
-        // 1. Get the currently logged-in user's username
-        const activeUsername = localStorage.getItem("currentUser");
-        
         if (!activeUsername) {
             alert("You must be logged in to purchase a membership.");
             window.location.href = "login.html";
             return;
         }
 
-        // 2. Retrieve their account document directly from standard local storage
+        // Retrieve their account document directly from standard local storage
         const userString = localStorage.getItem(activeUsername); 
         if (userString) {
             const userObject = JSON.parse(userString);
             
-            // 3. Attach the new membership plan
+            // Attach the new membership plan
             userObject.plan = formData.selectedPlan;
             
-            // 4. Overwrite their old document with the updated one
+            // Overwrite their old document with the updated one
             localStorage.setItem(activeUsername, JSON.stringify(userObject));
         }
 
         // Show success message
         $('.js-purchase-success').removeClass('d-none');
         
-        // Close modal after short delay
+        // Close modal after short delay, then reload page to show the disabled state
         setTimeout(() => {
           $('#purchaseModal').modal('hide');
+          location.reload(); 
         }, 1500);
       });
     });
