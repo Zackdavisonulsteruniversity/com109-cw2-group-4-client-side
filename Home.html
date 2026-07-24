@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UU Gym | Transform Your Body. Transform Your Life.</title>
+  
+  <!-- Bootstrap 5.3 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- External CSS files -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- DIRECT OVERRIDE STYLES TO FIX WHITE BACKGROUND -->
+  <style>
+    /* Ulster University Primary Navy */
+    :root {
+      --uu-navy: #001E62;
+      --uu-accent: #00A9E0;
+    }
+
+    body {
+      background-color: #f8f9fa !important;
+      color: #212529 !important;
+    }
+
+    /* Force Navbar Navy Background & White Text */
+    nav, 
+    .navbar, 
+    .bg-primary-uu {
+      background-color: var(--uu-navy) !important;
+    }
+
+    .navbar .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .navbar .nav-link.active, 
+    .navbar .nav-link:hover {
+      color: #ffffff !important;
+    }
+
+    .navbar-brand {
+      color: #ffffff !important;
+    }
+
+    /* Force Hero Section Navy Background & Dark Overlay */
+    .hero-section {
+      background-color: var(--uu-navy) !important;
+      background: linear-gradient(135deg, rgba(0, 30, 98, 0.92) 0%, rgba(0, 18, 58, 0.88) 100%), 
+                  url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat !important;
+      min-height: 80vh !important;
+      color: #ffffff !important;
+    }
+
+    /* Accent Cyan Elements */
+    .text-accent {
+      color: var(--uu-accent) !important;
+    }
+
+    .btn-accent {
+      background-color: var(--uu-accent) !important;
+      border-color: var(--uu-accent) !important;
+      color: #ffffff !important;
+    }
+
+    .btn-accent:hover {
+      background-color: #008cc0 !important;
+      border-color: #008cc0 !important;
+    }
+
+    .bg-primary-uu {
+      background-color: var(--uu-navy) !important;
+    }
+
+    .text-primary-uu {
+      color: var(--uu-navy) !important;
+    }
+    /* Fix CTA Section Dark Gradient Background */
+.bg-gradient-cta {
+  background: linear-gradient(135deg, #001E62 0%, #00123a 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Ensure white text inside dark banners */
+.bg-gradient-cta h2, 
+.bg-gradient-cta p {
+  color: #ffffff !important;
+}
+
+.bg-gradient-cta p.lead {
+  opacity: 0.85;
+}
+
+/* Fix Footer Dark Background */
+footer.bg-dark, 
+footer {
+  background-color: #0b1329 !important; /* Deep dark blue/black footer */
+  color: #ffffff !important;
+}
+
+footer a {
+  color: #a0aec0 !important;
+}
+
+footer a:hover {
+  color: #00A9E0 !important; /* Ulster cyan on hover */
+}
+
+/* Fix Card Backgrounds & Shadows */
+.card {
+  background-color: #ffffff !important;
+  border-radius: 12px;
+}
+  </style>
+  
+</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UU Gym | Transform Your Body. Transform Your Life.</title>
+  
+  <!-- Bootstrap 5.3 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Team Style Sheets -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="home">
+
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary-uu sticky-top shadow-sm" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <i class="bi bi-lightning-charge-fill text-accent" aria-hidden="true"></i>
+        <span>UU Gym</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
+          <li class="nav-item"><a class="nav-link" href="info.html">Information</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex gap-2 align-items-center">
+          <a href="login.html" class="btn btn-outline-light btn-sm px-3">Log In</a>
+          <a href="signup.html" class="btn btn-accent btn-sm text-white fw-bold px-3">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. Hero Section -->
+  <header class="hero-section text-white d-flex align-items-center position-relative">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative z-1 py-5 text-center text-lg-start">
+      <div class="row align-items-center">
+        <div class="col-lg-8 col-xl-7">
+          <span class="badge bg-accent-subtle text-accent fw-semibold mb-3 px-3 py-2 text-uppercase tracking-wide">
+            Official Ulster University Fitness Suite
+          </span>
+          <h1 class="display-3 fw-black lh-sm mb-3">
+            Transform Your Body. <br><span class="text-accent">Transform Your Life.</span>
+          </h1>
+          <p class="lead mb-4 text-light-50 max-w-600">
+            State-of-the-art fitness hubs across Belfast and Coleraine. Tailored student and community access, expert personal training, and cutting-edge equipment.
+          </p>
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+            <a href="signup.html" class="btn btn-accent btn-lg text-white fw-bold shadow-lg">
+              Join Now <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
+            </a>
+            <a href="membership.html" class="btn btn-outline-light btn-lg fw-semibold">
+              View Memberships
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. Why Choose Our Gym Section -->
+    <section class="py-5 bg-white">
+      <div class="container py-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+          <h2 class="h6 text-accent fw-bold text-uppercase tracking-wider">The UU Gym Edge</h2>
+          <h3 class="display-6 fw-bold text-primary-uu">Why Choose Our Gym</h3>
+          <p class="text-muted">Everything you need to reach your peak performance, backed by university-grade infrastructure.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm p-3 hover-lift transition-all">
+              <div class="card-body text-center">
+                <div class="icon-shape bg-primary-subtle text-primary-uu rounded-circle mx-auto mb-3">
+                  <i class="bi bi-cpu-fill fs-3" aria-hidden="true"></i>
+                </div>
+                <h4 class="h5 fw-bold text-primary-uu">Modern Equipment</h4>
+                <p class="text-muted small mb-0">Technogym cardio stations, Eleiko lifting platforms, and interactive resistance machines.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm p-3 hover-lift transition-all">
+              <div class="card-body text-center">
+                <div class="icon-shape bg-primary-subtle text-primary-uu rounded-circle mx-auto mb-3">
+                  <i class="bi bi-award-fill fs-3" aria-hidden="true"></i>
+                </div>
+                <h4 class="h5 fw-bold text-primary-uu">Certified Trainers</h4>
+                <p class="text-muted small mb-0">REPs accredited personal trainers ready to build custom exercise programming for your goals.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm p-3 hover-lift transition-all">
+              <div class="card-body text-center">
+                <div class="icon-shape bg-primary-subtle text-primary-uu rounded-circle mx-auto mb-3">
+                  <i class="bi bi-clock-history fs-3" aria-hidden="true"></i>
+                </div>
+                <h4 class="h5 fw-bold text-primary-uu">Open 24/7</h4>
+                <p class="text-muted small mb-0">Keycard turnstile entry allowing flexible training around early lectures or late study sessions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm p-3 hover-lift transition-all">
+              <div class="card-body text-center">
+                <div class="icon-shape bg-primary-subtle text-primary-uu rounded-circle mx-auto mb-3">
+                  <i class="bi bi-people-fill fs-3" aria-hidden="true"></i>
+                </div>
+                <h4 class="h5 fw-bold text-primary-uu">Friendly Community</h4>
+                <p class="text-muted small mb-0">Inclusive, welcoming atmosphere with inclusive sports clubs and social group sessions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Facilities Section -->
+    <section class="py-5 bg-light border-top border-bottom">
+      <div class="container py-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
+          <div>
+            <h2 class="h6 text-accent fw-bold text-uppercase tracking-wider">World-Class Setup</h2>
+            <h3 class="display-6 fw-bold text-primary-uu mb-0">Explore Our Facilities</h3>
+          </div>
+          <a href="info.html" class="btn btn-outline-primary fw-semibold mt-3 mt-md-0">View Full Tech Specs</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden group-hover">
+              <img src="assets/images/strength-zone.jpg" class="card-img-top facility-img" alt="Free weights rack with dumbbells" loading="lazy">
+              <div class="card-body">
+                <h4 class="h5 fw-bold text-primary-uu">Free Weights Zone</h4>
+                <p class="card-text text-muted small">Dumbbells up to 50kg, 4 Olympic power racks, and adjustable benches.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden group-hover">
+              <img src="assets/images/cardio-zone.jpg" class="card-img-top facility-img" alt="Cardio equipment row with treadmills" loading="lazy">
+              <div class="card-body">
+                <h4 class="h5 fw-bold text-primary-uu">Cardio Suite</h4>
+                <p class="card-text text-muted small">18 treadmills, Wattbikes, rowing machines, and stairmasters with live TV screens.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden group-hover">
+              <img src="assets/images/functional-zone.jpg" class="card-img-top facility-img" alt="Functional turf sprint track with sleds" loading="lazy">
+              <div class="card-body">
+                <h4 class="h5 fw-bold text-primary-uu">Functional Turf Track</h4>
+                <p class="card-text text-muted small">Prowler sled track, battle ropes, kettlebells, and plyometric boxes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden group-hover">
+              <img src="assets/images/belfast-gym.jpg" class="card-img-top facility-img" alt="Group fitness studio with spin bikes" loading="lazy">
+              <div class="card-body">
+                <h4 class="h5 fw-bold text-primary-uu">Group Studios</h4>
+                <p class="card-text text-muted small">Acoustically tuned studios for Spin, Les Mills, Yoga, and HIIT workouts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Gym Statistics Section -->
+    <section class="py-5 bg-primary-uu text-white position-relative overflow-hidden">
+      <div class="container py-3">
+        <div class="row g-4 text-center">
+          <div class="col-6 col-lg-3">
+            <div class="p-3">
+              <i class="bi bi-person-check fs-1 text-accent mb-2 d-block" aria-hidden="true"></i>
+              <p class="display-5 fw-black text-white mb-1">2,500+</p>
+              <p class="text-light-50 fw-semibold text-uppercase small mb-0">Active Members</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="p-3">
+              <i class="bi bi-calendar-event fs-1 text-accent mb-2 d-block" aria-hidden="true"></i>
+              <p class="display-5 fw-black text-white mb-1">40+</p>
+              <p class="text-light-50 fw-semibold text-uppercase small mb-0">Weekly Classes</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="p-3">
+              <i class="bi bi-shield-check fs-1 text-accent mb-2 d-block" aria-hidden="true"></i>
+              <p class="display-5 fw-black text-white mb-1">15</p>
+              <p class="text-light-50 fw-semibold text-uppercase small mb-0">Certified Trainers</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="p-3">
+              <i class="bi bi-unlock fs-1 text-accent mb-2 d-block" aria-hidden="true"></i>
+              <p class="display-5 fw-black text-white mb-1">24/7</p>
+              <p class="text-light-50 fw-semibold text-uppercase small mb-0">Facility Access</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Membership Benefits Section -->
+    <section class="py-5 bg-white">
+      <div class="container py-4">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="h6 text-accent fw-bold text-uppercase tracking-wider">Unmatched Value</h2>
+            <h3 class="display-6 fw-bold text-primary-uu mb-4">Every Membership Includes Premier Perks</h3>
+            <p class="text-muted mb-4">Joining UU Gym gives you access to more than just workout space. Enjoy an all-inclusive wellness ecosystem designed around your university schedule.</p>
+            
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Unlimited Gym Access</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Free Fitness Assessment</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Personal Training Support</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Nutrition Guidance</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Mobile Booking Portal</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3 bg-light">
+                  <i class="bi bi-check-circle-fill text-accent fs-5" aria-hidden="true"></i>
+                  <span class="fw-semibold text-dark small">Free Campus Parking</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="membership.html" class="btn btn-primary-uu btn-lg fw-bold shadow-sm">
+              Explore Pricing & Plans <i class="bi bi-chevron-right ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="position-relative">
+              <img src="assets/images/coleraine-gym.jpg" class="img-fluid rounded-4 shadow-lg" alt="Student training with personal trainer" loading="lazy">
+              <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded-3 shadow-sm border border-light max-w-250 d-none d-sm-block">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-trophy-fill text-warning fs-4" aria-hidden="true"></i>
+                  <div>
+                    <p class="mb-0 fw-bold small text-dark">Top University Gym</p>
+                    <p class="mb-0 text-muted extra-small">Northern Ireland Sports Awards</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Customer Testimonials Section -->
+    <section class="py-5 bg-light border-top">
+      <div class="container py-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+          <h2 class="h6 text-accent fw-bold text-uppercase tracking-wider">Member Stories</h2>
+          <h3 class="display-6 fw-bold text-primary-uu">What Our Members Say</h3>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="card-body d-flex flex-column">
+                <div class="text-warning mb-3" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                </div>
+                <blockquote class="blockquote fs-6 text-muted mb-4 flex-grow-1">
+                  "The Belfast campus gym is top tier. Being able to train between my computing lectures right on campus saves me so much time!"
+                </blockquote>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-circle bg-primary-uu text-white fw-bold">AM</div>
+                  <div>
+                    <h4 class="h6 mb-0 fw-bold text-primary-uu">Alex Morgan</h4>
+                    <p class="text-muted extra-small mb-0">BSc Computer Science Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="card-body d-flex flex-column">
+                <div class="text-warning mb-3" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                </div>
+                <blockquote class="blockquote fs-6 text-muted mb-4 flex-grow-1">
+                  "The staff plan is incredible value. The trainers built a custom powerlifting plan that helped me smash my personal records."
+                </blockquote>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-circle bg-accent text-white fw-bold">DR</div>
+                  <div>
+                    <h4 class="h6 mb-0 fw-bold text-primary-uu">Dr. Sarah Reid</h4>
+                    <p class="text-muted extra-small mb-0">University Lecturer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="card-body d-flex flex-column">
+                <div class="text-warning mb-3" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                  <i class="bi bi-star-fill" aria-hidden="true"></i>
+                </div>
+                <blockquote class="blockquote fs-6 text-muted mb-4 flex-grow-1">
+                  "As a community member living nearby, the 24/7 access and clean functional equipment make this the best gym in the area."
+                </blockquote>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-circle bg-secondary text-white fw-bold">CP</div>
+                  <div>
+                    <h4 class="h6 mb-0 fw-bold text-primary-uu">Chris Patterson</h4>
+                    <p class="text-muted extra-small mb-0">Community Member</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. High-Conversion Call-to-Action Section -->
+    <section class="py-5 bg-gradient-cta text-white text-center">
+      <div class="container py-4">
+        <div class="max-w-700 mx-auto">
+          <h2 class="display-5 fw-black mb-3">Ready to Start Your Fitness Journey?</h2>
+          <p class="lead mb-4 text-light-50">Create your account online in less than 2 minutes and unlock instant campus gym entry.</p>
+          <a href="signup.html" class="btn btn-accent btn-lg text-white fw-bold px-5 py-3 shadow-lg hover-scale">
+            Create Free Account Now
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Complete Footer -->
+  <footer id="contact" class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <a class="navbar-brand fw-bold fs-4 d-inline-flex align-items-center gap-2 mb-3" href="index.html">
+            <i class="bi bi-lightning-charge-fill text-accent" aria-hidden="true"></i>
+            <span class="text-white">UU Gym</span>
+          </a>
+          <p class="text-secondary small mb-3">
+            Official sports and fitness facilities serving students, university staff, and local communities across Ulster campuses.
+          </p>
+          <div class="d-flex gap-3 fs-5">
+            <a href="#" class="text-secondary hover-accent" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="#" class="text-secondary hover-accent" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="text-secondary hover-accent" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="#" class="text-secondary hover-accent" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-6 col-lg-2">
+          <h3 class="h6 fw-bold text-white text-uppercase tracking-wider mb-3">Quick Links</h3>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-secondary hover-white">Home</a></li>
+            <li class="mb-2"><a href="membership.html" class="text-decoration-none text-secondary hover-white">Memberships</a></li>
+            <li class="mb-2"><a href="info.html" class="text-decoration-none text-secondary hover-white">Gym Info</a></li>
+            <li class="mb-2"><a href="signup.html" class="text-decoration-none text-secondary hover-white">Sign Up</a></li>
+            <li class="mb-2"><a href="login.html" class="text-decoration-none text-secondary hover-white">Log In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h3 class="h6 fw-bold text-white text-uppercase tracking-wider mb-3">Opening Hours</h3>
+          <ul class="list-unstyled text-secondary small mb-0">
+            <li class="mb-1"><strong class="text-white">Belfast:</strong> 06:00 - 22:00 (M-F)</li>
+            <li class="mb-3"><strong class="text-white">Sat-Sun:</strong> 08:00 - 20:00</li>
+            <li class="mb-1"><strong class="text-white">Coleraine:</strong> 07:00 - 21:00 (M-F)</li>
+            <li class="mb-0"><strong class="text-white">Sat-Sun:</strong> 09:00 - 18:00</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h3 class="h6 fw-bold text-white text-uppercase tracking-wider mb-3">Contact Us</h3>
+          <ul class="list-unstyled text-secondary small">
+            <li class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-geo-alt-fill text-accent" aria-hidden="true"></i> York Street, Belfast BT15 1ED
+            </li>
+            <li class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-envelope-fill text-accent" aria-hidden="true"></i> sport@ulster.ac.uk
+            </li>
+            <li class="d-flex align-items-center gap-2 mb-0">
+              <i class="bi bi-telephone-fill text-accent" aria-hidden="true"></i> +44 (0)28 9536 7000
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="border-secondary opacity-25">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small pt-2">
+        <p class="mb-2 mb-md-0">&copy; 2026 Ulster University Gym Project. Academic Coursework.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-secondary text-decoration-none hover-white">Privacy Policy</a>
+          <a href="#" class="text-secondary text-decoration-none hover-white">Terms of Access</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
