@@ -1,0 +1,40 @@
+/* --- FIX FOR WHITE BACKGROUND / INVISIBLE TEXT --- */
+
+/* 1. Force Nav Bar Navy Background */
+nav.bg-primary-uu, 
+.navbar {
+  background-color: #001E62 !important; /* Force Ulster Navy */
+}
+
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important; /* Make nav links readable */
+}
+
+.navbar .nav-link.active, 
+.navbar .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* 2. Force Hero Section Navy Background & Overlay */
+.hero-section {
+  background-color: #001E62 !important; /* Fallback navy background */
+  background: linear-gradient(135deg, rgba(0, 30, 98, 0.95), rgba(0, 18, 58, 0.95)), 
+              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat !important;
+  min-height: 80vh;
+}
+
+/* 3. Accent Cyan Color Fixes */
+.text-accent {
+  color: #00A9E0 !important; /* Ulster Accent Blue */
+}
+
+.btn-accent {
+  background-color: #00A9E0 !important;
+  border-color: #00A9E0 !important;
+  color: #ffffff !important;
+}
+
+.btn-accent:hover {
+  background-color: #008cc0 !important;
+  border-color: #008cc0 !important;
+}
