@@ -131,6 +131,9 @@ function loginUser(event) {
     return;
   }
 
+  // Store the current user in local storage for session management
+  setLocalStorageValue("currentUser", usernameInput);
+
   alert("Login successful!");
   window.location.href = "index.html";
 }

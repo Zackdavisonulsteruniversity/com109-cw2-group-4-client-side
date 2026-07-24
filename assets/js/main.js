@@ -116,13 +116,15 @@ function renderSharedComponents() {
 
 function updateNavbar() {
   const page = $("body").data("page");
-  const session = getSession();
   const navClass = `.nav-${page}`;
   $(navClass).addClass("active");
 
-  if (session) {
+  // Look for our new session token
+  const activeUsername = localStorage.getItem("currentUser");
+
+  if (activeUsername) {
     $(".auth-only").removeClass("d-none");
-    $(".js-user-name").text(session.name || "Member");
+    $(".js-user-name").text(activeUsername);
     $(".nav-login").closest(".nav-item").addClass("d-none");
     $(".nav-signup").closest(".nav-item").addClass("d-none");
   }
@@ -230,15 +232,54 @@ function bindInterestForm() {
 function guardDashboard() {
   if ($("body").data("page") !== "dashboard") return;
 
-  const session = getSession();
-  if (!session) {
+  const activeUsername = localStorage.getItem("currentUser");
+  if (!activeUsername) {
     window.location.href = "login.html";
     return;
   }
 
-  $(".js-dashboard-name").text(session.name || "Member");
-  $(".js-dashboard-plan").text(session.plan || "Not set");
-  $(".js-dashboard-student-id").text(session.studentId || "Not set");
+  const userString = localStorage.getItem(activeUsername);
+  if (userString) {
+    const userObject = JSON.parse(userString);
+
+    // If they have a plan, show it and reveal the cancel button
+    if (userObject.plan) {
+      $(".js-dashboard-plan").text(userObject.plan);
+      $(".js-cancel-plan").removeClass("d-none");
+    } else {
+      $(".js-dashboard-plan").text("No active membership");
+      $(".js-cancel-plan").addClass("d-none");
+    }
+    
+    $(".js-dashboard-name").text(userObject.username || "Member");
+    $(".js-dashboard-student-id").text(userObject.studentId || "Not provided");
+  }
+}
+
+function bindCancelPlan() {
+  $(".js-cancel-plan").on("click", function() {
+    // 1. Confirm the destructive action
+    if (confirm("Are you sure you want to cancel your membership?")) {
+      
+      const activeUsername = localStorage.getItem("currentUser");
+      if (!activeUsername) return;
+
+      const userString = localStorage.getItem(activeUsername);
+      if (userString) {
+        const userObject = JSON.parse(userString);
+        
+        // 2. Delete the plan property from the user's object
+        delete userObject.plan;
+        
+        // 3. Save the modified object back to local storage
+        localStorage.setItem(activeUsername, JSON.stringify(userObject));
+        
+        // 4. Immediately update the UI to reflect the change
+        $(".js-dashboard-plan").text("No active membership");
+        $(this).addClass("d-none"); // Hide the button again
+      }
+    }
+  });
 }
 
 function bindContactForm() {
@@ -267,7 +308,8 @@ function bindContactForm() {
 
 function bindLogout() {
   $(".js-logout").on("click", () => {
-    localStorage.removeItem(STORAGE_KEYS.session);
+    // Delete our session token on logout
+    localStorage.removeItem("currentUser");
     window.location.href = "login.html";
   });
 }
@@ -282,4 +324,5 @@ $(function () {
   bindLoginForm();
   bindInterestForm();
   bindContactForm();
+  bindCancelPlan();
 });
