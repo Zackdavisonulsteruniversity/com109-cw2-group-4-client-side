@@ -3,6 +3,28 @@ body {
   color: var(--color-text-dark);
 }
 
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 2000;
+  background: #ffffff;
+  color: #000000;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-primary-blue);
+  border-radius: 0.375rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent-blue);
+  outline-offset: 2px;
+}
+
 .hero-bg {
   background: linear-gradient(135deg, #ffffff, #e9f6ff);
 }
@@ -23,6 +45,12 @@ body {
 
 .site-header .nav-link:hover {
   color: var(--color-primary-blue);
+}
+
+.accessibility-controls .btn[aria-pressed="true"] {
+  background-color: var(--color-primary-blue);
+  border-color: var(--color-primary-blue);
+  color: var(--color-white);
 }
 
 .navbar .nav-link.active {
@@ -68,6 +96,51 @@ body {
   height: 220px;
   object-fit: cover;
   margin-top: 0.75rem;
+}
+
+.a11y-large-text {
+  font-size: 122.5%;
+}
+
+.a11y-high-contrast {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.a11y-high-contrast .utility-bar,
+.a11y-high-contrast .footer-bottom {
+  background-color: #000000;
+  color: #ffffff !important;
+}
+
+.a11y-high-contrast .site-header .nav-link,
+.a11y-high-contrast .footer-links .nav-link {
+  color: #000000;
+}
+
+.a11y-high-contrast .btn-primary {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.a11y-high-contrast .card,
+.a11y-high-contrast .site-footer {
+  border-color: #000000;
+}
+
+.a11y-reduced-motion *,
+.a11y-reduced-motion *::before,
+.a11y-reduced-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 .image-placeholder {
